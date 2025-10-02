@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const splitText = new SplitText(h1, { type: "chars" });
   const chars = splitText.chars;
 
+  function resetH1() {
+    gsap.set(chars, { y: 0, autoAlpha: 1 });
+    gsap.set(".about-content", { autoAlpha: 0, backgroundColor: "#12b839ff" });
+    gsap.set(".anim-content", { autoAlpha: 0, backgroundColor: "#b8128fff" });
+    gsap.set(".rest-content", { autoAlpha: 0, backgroundColor: "#e5e50cff" });
+  }
+
   const linkHScale = gsap.timeline({ paused: true });
   linkHScale.to(linkH2, {
     scale: 1.2,
@@ -29,13 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     ease: "power2.out",
   });
-
-  function resetH1() {
-    gsap.set(chars, { y: 0, autoAlpha: 1 });
-    gsap.set(".about-content", { autoAlpha: 0, backgroundColor: "#12b839ff" });
-    gsap.set(".anim-content", { autoAlpha: 0, backgroundColor: "#b8128fff" });
-    gsap.set(".rest-content", { autoAlpha: 0, backgroundColor: "#e5e50cff" });
-  }
 
   linkW.addEventListener("mouseenter", () => {
     linkHScale.restart();
