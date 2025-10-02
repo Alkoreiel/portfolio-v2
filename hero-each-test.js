@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
         .to(".anim-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#b8128fff" })
+        .to( ".logo-rive", { autoAlpha: 1}, "+.3"
         .call(() => {
           // Start Rive animation here, e.g. riveInstance.play();
         })
