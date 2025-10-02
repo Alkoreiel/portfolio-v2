@@ -20,16 +20,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   linkWraps.forEach(linkW => {
     const linkH2 = linkW.querySelector("h2");
-    const anima = linkW.getAttribute("data-anima"); // e.g. "about"
-    const contentSelector = `.${anima}-content`;    // e.g. ".about-content"
+    const anima = linkW.getAttribute("data-anima");
 
-    // Timeline for this button's h2 scale
     const h2ScaleTimeline = gsap.timeline({ paused: true });
     h2ScaleTimeline.to(linkH2, { scale: 1.2, duration: 0.5 });
 
-    // Timeline for this button's matching content element
-    const contentTimeline = gsap.timeline({ paused: true });
-    contentTimeline.to(contentSelector, { autoAlpha: 1, duration: 0.5 });
+    let contentTimeline;
+
+    if (anima === "about") {
+      contentTimeline = gsap.timeline({ paused: true });
+      contentTimeline
+        .to(".about-content", { autoAlpha: 1, duration: 0.5 })
+        .from(".about-content .text-line", { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<")
+        .from(".about-content .image", { y: 50, autoAlpha: 0, duration: 0.6 }, "<0.3");
+    } else if (anima === "anim") {
+      contentTimeline = gsap.timeline({ paused: true });
+      contentTimeline
+        .to(".anim-content", { autoAlpha: 1, duration: 0.5 })
+        .call(() => {
+          // Start Rive animation here, e.g. riveInstance.play();
+        })
+        .from(".anim-content .lottie", { autoAlpha: 0, stagger: 0.15, duration: 0.4 }, "<0.3");
+    } else if (anima === "rest") {
+      contentTimeline = gsap.timeline({ paused: true });
+      contentTimeline
+        .to(".rest-content", { autoAlpha: 1, duration: 0.5 })
+        .from(".rest-content .image", { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<");
+    }
 
     linkW.addEventListener("mouseenter", () => {
       dropTimeline.restart();
@@ -39,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     linkW.addEventListener("mouseleave", () => {
       resetH1();
-      gsap.set(contentSelector, { autoAlpha: 0, duration: 0.5 });
+      gsap.set([`.${anima}-content`], { autoAlpha: 0, duration: 0.5 });
       gsap.set(linkH2, { scale: 1, duration: 0.5 });
     });
   });
