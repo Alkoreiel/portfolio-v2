@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (anima === "about") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".about-content", { autoAlpha: 1, duration: 0.5 })
+        .to(".about-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#0EE30E" })
         .from(".about-content .text-line", { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<")
         .from(".about-content .image", { y: 50, autoAlpha: 0, duration: 0.6 }, "<0.3");
     } else if (anima === "anim") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".anim-content", { autoAlpha: 1, duration: 0.5 })
+        .to(".anim-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#E30EB8" })
         .call(() => {
           // Start Rive animation here, e.g. riveInstance.play();
         })
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (anima === "rest") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".rest-content", { autoAlpha: 1, duration: 0.5 })
+        .to(".rest-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#EBBE09" })
         .from(".rest-content .image", { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<");
     }
 
