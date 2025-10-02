@@ -33,31 +33,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   linkW.addEventListener("mouseenter", () => {
     gsap.to("body", { color: "#ff0000", duration: 0.5 });
-    linkHScale.restart();
-    dropTimeline.restart();
+    // linkHScale.restart();
+    // dropTimeline.restart();
 
-    if (linkW.classList.contains("about")) {
-      gsap.to(".about-content", { autoAlpha: 1, duration: 0.5 });
-    } else if (linkW.classList.contains("anim")) {
-      let tl = gsap.timeline();
-      tl.to(".anim-bg", { autoAlpha: 1, duration: 0.5 })
-        .call(() => {
-          // Play Rive animation here
-        })
-        .call(() => {
-          // Play Lottie animations here
-        })
-        .to(".anim-content", { autoAlpha: 1, duration: 0.5 }, "<");
-    } else if (linkW.classList.contains("rest")) {
-      gsap.to(".rest-content", { autoAlpha: 1, duration: 0.5 });
-    }
+    // if (linkW.classList.contains("about")) {
+    //   gsap.to(".about-content", { autoAlpha: 1, duration: 0.5 });
+    // } else if (linkW.classList.contains("anim")) {
+    //   let tl = gsap.timeline();
+    //   tl.to(".anim-bg", { autoAlpha: 1, duration: 0.5 })
+    //     .call(() => {
+    //       // Play Rive animation here
+    //     })
+    //     .call(() => {
+    //       // Play Lottie animations here
+    //     })
+    //     .to(".anim-content", { autoAlpha: 1, duration: 0.5 }, "<");
+    // } else if (linkW.classList.contains("rest")) {
+    //   gsap.to(".rest-content", { autoAlpha: 1, duration: 0.5 });
+    // }
   });
 
-  linkW.addEventListener("mouseleave", () => {
-    gsap.to(linkH2, { scale: 1, duration: 0.5 });
-    resetH1();
-    gsap.set([".about-content", ".anim-content", ".rest-content"], {
-      autoAlpha: 0,
-    });
-  });
+  //   linkW.addEventListener("mouseleave", () => {
+  //     gsap.to(linkH2, { scale: 1, duration: 0.5 });
+  //     resetH1();
+  //     gsap.set([".about-content", ".anim-content", ".rest-content"], {
+  //       autoAlpha: 0,
+  //     });
+  //   });
 });
