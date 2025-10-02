@@ -34,12 +34,14 @@ if (introTitle && animbgEl) {
 
     if (h1Chars.length) {
       gsap.to(h1Chars, {
+        duration: 0.6,
         y: 100,
-        opacity: 0,
-        duration: 0.7,
+        autoAlpha: 0,
         stagger: {
-          each: 0.07,
+          each: 0.05,
           from: "random",
+        },
+        ease: "power2.out",
         },
       });
     }
