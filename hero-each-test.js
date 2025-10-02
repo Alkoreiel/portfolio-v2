@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   linkWraps.forEach(linkW => {
     const linkH2 = linkW.querySelector("h2");
-    const anima = linkW.getAttribute("data-anima");
-    const contentSelector = `.${anima}-content`;
+    const anima = linkW.getAttribute("data-anima"); // e.g. "about"
+    const contentSelector = `.${anima}-content`;    // e.g. ".about-content"
 
     // Timeline for this button's h2 scale
     const h2ScaleTimeline = gsap.timeline({ paused: true });
     h2ScaleTimeline.to(linkH2, { scale: 1.2, duration: 0.5 });
 
-    // Timeline for its relative content (optional add steps here)
+    // Timeline for this button's matching content element
     const contentTimeline = gsap.timeline({ paused: true });
     contentTimeline.to(contentSelector, { autoAlpha: 1, duration: 0.5 });
 
@@ -44,4 +44,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
