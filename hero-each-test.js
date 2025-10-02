@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (anima === "about") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".about-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#0EE30E" })
+        .to(".about-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#0EE30E" }, ".9")
         .from(".about-content .text-line", { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<")
         .from(".about-content .image", { y: 50, autoAlpha: 0, duration: 0.6 }, "<0.3");
     } else if (anima === "anim") {
