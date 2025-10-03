@@ -43,16 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
           { autoAlpha: 1, duration: 0.5, backgroundColor: "#12b839ff" },
           h1HideTime
         )
-        .from(
-          ".about-content",
-          { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 },
-          "<"
-        )
-        .from(
-          ".about-content img",
-          { y: 50, autoAlpha: 0, duration: 0.6 },
-          "<0.3"
-        );
+        .from("p", { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<")
+        .from("img", { y: 50, autoAlpha: 0, duration: 0.6 }, "<0.3");
 
       /** ANIMATION **/
     } else if (anima === "anim") {
@@ -90,11 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
           { autoAlpha: 1, duration: 0.5, backgroundColor: "#e5e50cff" },
           h1HideTime
         )
-        .from(
-          ".rest-content .image",
-          { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 },
-          "<"
-        );
+        .from("img", { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<");
     }
 
     linkW.addEventListener("mouseenter", () => {
