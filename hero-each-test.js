@@ -44,12 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
           h1HideTime
         )
         .from(
-          ".about-content .text-line",
+          ".about-content",
           { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 },
           "<"
         )
         .from(
-          ".about-content .image",
+          ".about-content img",
           { y: 50, autoAlpha: 0, duration: 0.6 },
           "<0.3"
         );
