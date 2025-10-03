@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const chars = splitText.chars;
   const linkWraps = document.querySelectorAll(".link_wrap");
 
+  /** Sizes **/
   const h1HideTime = 0.6;
+  const animbgS = "150vmax";
 
   function resetH1() {
     gsap.set(chars, { y: 0, autoAlpha: 1 });
@@ -22,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ease: "power2.out",
   });
 
+  /** Link Hovers **/
   linkWraps.forEach((linkW) => {
     const linkH2 = linkW.querySelector("h2");
     const anima = linkW.getAttribute("data-anima");
@@ -56,8 +59,19 @@ document.addEventListener("DOMContentLoaded", () => {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
         .to(".anim-content", { autoAlpha: 1, duration: 0.5 }, h1HideTime)
+        .to(
+          ".home-animation-bg",
+          {
+            autoAlpha: 1,
+            borderRadius: "0vw",
+            width: animbgS,
+            height: animbgS,
+            duration: 1.9,
+            ease: "power2.inOut",
+          },
+          "<"
+        )
         .to(".home-alkoreiel-logo", { autoAlpha: 1, duration: 0.5 }, "<.3")
-        .to(bg)
         .call(() => {
           // Start Rive animation here, e.g. riveInstance.play();
         })
