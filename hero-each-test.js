@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           "<"
         )
-        .to(".home-alkoreiel-logo", { autoAlpha: 1, duration: 0.5 }, "<.3")
+        .to(".home_alkoreiel-logo", { autoAlpha: 1, duration: 0.5 }, "<.3")
         .call(() => {
           // Start Rive animation here, e.g. riveInstance.play();
         })
