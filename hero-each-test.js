@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       contentTimeline
         .to(".anim-content", { autoAlpha: 1, duration: 0.5 }, h1HideTime)
         .to(
-          ".home-animation-bg",
+          ".home_animation-bg",
           {
             autoAlpha: 1,
             borderRadius: "0vw",
