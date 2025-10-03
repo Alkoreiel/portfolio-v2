@@ -4,21 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const chars = splitText.chars;
   const linkWraps = document.querySelectorAll(".link_wrap");
 
+  const h1HideTime = 0.6;
+
   function resetH1() {
     gsap.set(chars, { y: 0, autoAlpha: 1 });
-    gsap.set([".about-content", ".anim-content", ".rest-content"], { autoAlpha: 0 });
+    gsap.set([".about-content", ".anim-content", ".rest-content"], {
+      autoAlpha: 0,
+    });
   }
 
   const dropTimeline = gsap.timeline({ paused: true });
   dropTimeline.to(chars, {
-    duration: 0.6,
+    duration: h1HideTime,
     y: 100,
     autoAlpha: 0,
     stagger: { each: 0.05, from: "random" },
     ease: "power2.out",
   });
 
-  linkWraps.forEach(linkW => {
+  linkWraps.forEach((linkW) => {
     const linkH2 = linkW.querySelector("h2");
     const anima = linkW.getAttribute("data-anima");
 
@@ -27,26 +31,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let contentTimeline;
 
+    /** ABOUT **/
     if (anima === "about") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".about-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#12b839ff" }, ".9")
-        .from(".about-content .text-line", { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<")
-        .from(".about-content .image", { y: 50, autoAlpha: 0, duration: 0.6 }, "<0.3");
+        .to(
+          ".about-content",
+          { autoAlpha: 1, duration: 0.5, backgroundColor: "#12b839ff" },
+          h1HideTime
+        )
+        .from(
+          ".about-content .text-line",
+          { x: -100, autoAlpha: 0, stagger: 0.2, duration: 0.5 },
+          "<"
+        )
+        .from(
+          ".about-content .image",
+          { y: 50, autoAlpha: 0, duration: 0.6 },
+          "<0.3"
+        );
+
+      /** ANIMATION **/
     } else if (anima === "anim") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".anim-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#b8128fff" })
-        .to( ".home-alkoreiel-logo", { autoAlpha: 1, duration: 0.5 }, "+.3")
+        .to(".anim-content", { autoAlpha: 1, duration: 0.5 }, h1HideTime)
+        .to(".home-alkoreiel-logo", { autoAlpha: 1, duration: 0.5 }, "<.3")
+        .to(bg)
         .call(() => {
           // Start Rive animation here, e.g. riveInstance.play();
         })
-        .from(".anim-content .lottie", { autoAlpha: 0, stagger: 0.15, duration: 0.4 }, "<0.3");
+        .from(
+          ".anim-content .lottie",
+          { autoAlpha: 0, stagger: 0.15, duration: 0.4 },
+          "<0.3"
+        );
+
+      /** REST **/
     } else if (anima === "rest") {
       contentTimeline = gsap.timeline({ paused: true });
       contentTimeline
-        .to(".rest-content", { autoAlpha: 1, duration: 0.5, backgroundColor: "#e5e50cff" })
-        .from(".rest-content .image", { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 }, "<");
+        .to(
+          ".rest-content",
+          { autoAlpha: 1, duration: 0.5, backgroundColor: "#e5e50cff" },
+          h1HideTime
+        )
+        .from(
+          ".rest-content .image",
+          { y: 30, autoAlpha: 0, stagger: 0.2, duration: 0.5 },
+          "<"
+        );
     }
 
     linkW.addEventListener("mouseenter", () => {
@@ -58,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     linkW.addEventListener("mouseleave", () => {
       resetH1();
       gsap.set([`.${anima}-content`], { autoAlpha: 0, duration: 0.5 });
-      gsap.set(linkH2, { scale: 1, duration: 0.5 });
+      gsap.set(linkH2, { scale: 1, duration: 0.5 }, "<");
     });
   });
 });
